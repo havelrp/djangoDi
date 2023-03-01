@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <title>House 3D</title>
+</head>
+<body>
+<header class="navbar navbar-light bg-secondary fixed-top container-fluid d-flex bd-highlight px-5 mb-5">
+    <a href="{% url 'Indice' %}"><img src="{% static 'img/iconoFacherito.png' %}" width="50" height="50" alt=""></a>
+    <div class="d-flex">
+        <a class="text-white pe-3 nav-link" href="{% url 'Productos' %}"><h5>Productos</h5></a>
+        <a class="text-white pe-3 nav-link" href="{% url 'Reservas' %}"><h5>Reservar</h5></a>
+        <a class="text-white pe-3 nav-link" href="{% url 'Contacto' %}"><h5>Contacto</h5></a>
+        <a class="text-white pe-3 nav-link" href="{% url 'Registro' %}"><h5>Registrarte</h5></a>
+    </div>
+</header>
+<h1 class="justify-content-center mt-5 pt-5">Registrar modelo</h1>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6 col-lg-5 col-xl-4">
+        <div class="modeloForm">
+            <form method="POST" class="p-3 p-xl-4">
+                <div class="mb-3"><input id="name-1" class="form-control" type="text" name="nombre"
+                                         placeholder="Nombre"/></div>
+                <div class="mb-3"><input id="dimensiones-1" class="form-control" type="text" name="dimension"
+                                         placeholder="Dimensiones Ej: 9x13"/></div>
+                <div class="mb-3"><input id="material-1" class="form-control" type="text" name="material"
+                                         placeholder="Material"/></div>
+                <div class="mb-3"><input id="color-1" class="form-control" type="text" name="color"
+                                         placeholder="Color"/></div>
+                <div class="mb-3"><input id="precio-1" class="form-control" type="number" name="precio"
+                                         placeholder="Precio"/></div>
+                <div class="mb-3"><textarea id="descripcion-1" class="form-control" name="descripcion" rows="6"
+                                            placeholder="Descripcion"></textarea></div>
+                <div>
+                    <button class="btn btn-primary d-block w-100" type="submit">Registrar</button>
+                </div>
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
