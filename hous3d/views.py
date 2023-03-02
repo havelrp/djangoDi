@@ -39,7 +39,7 @@ def registro(request):
         if form.is_valid():
             registro = form.save(commit=False)
             registro.save()
-            return redirect('Indice')
+            return redirect('Cliente')
     return render(request, 'registro.html')
 
 
@@ -53,3 +53,7 @@ def modeloForm(request):
     else:
         form = ModeloForm()
     return render(request, 'modeloForm.html', {'form': form})
+
+def cliente(request):
+    clientes = Cliente.objects.all()
+    return render(request, 'cliente.html', {'clientes': clientes})

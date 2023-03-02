@@ -1,5 +1,5 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-
     <title>House 3D</title>
 </head>
 <body>
@@ -17,49 +16,38 @@
         <a class="text-white pe-3 nav-link" href="{% url 'Productos' %}"><h5>Productos</h5></a>
         <a class="text-white pe-3 nav-link" href="{% url 'Reservas' %}"><h5>Reservar</h5></a>
         <a class="text-white pe-3 nav-link" href="{% url 'Contacto' %}"><h5>Contacto</h5></a>
-        <a class="text-white pe-3 nav-link" href="{% url 'Cliente' %}"><h5>Clientes</h5></a>
+        <a class="text-white pe-3 nav-link" href="{% url 'Cliente' %}"><h5>Cliente</h5></a>
         <a class="text-white pe-3 nav-link" href="{% url 'Registro' %}"><h5>Registrarte</h5></a>
     </div>
 </header>
 
 <div class="mt-5 pt-5">
-    {% if modelos %}
-        {% for modelo in modelos %}
+    {% if clientes %}
+        {% for cliente in clientes %}
             {% if forloop.first %}
-                <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3 mb-3">
+                <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-4 mb-3">
             {% endif %}
         <div class="col">
-            <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;"
-                                   src="{% static "img/default.png" %}"/>
-                <div class="card-body p-4">
-                    <h4 class="card-title">{{ modelo.nombre }}</h4>
-                    <h5 class="card-title">Id del modelo - {{ modelo.id }}</h5>
-                    <p class="card-text">{{ modelo.descripcion }}</p>
-                    <p class="card-text">{{ modelo.precio }} € </p>
-                    <a class="btn btn-primary mt-auto" href="{% url 'Indice' %}">Comprar</a>
-                </div>
+            <div class="card-body p-4">
+                <h4 class="card-title">{{ cliente.nombre }}</h4>
+                <h5 class="card-title">Telefono: {{ cliente.telefono }}</h5>
+                <p class="card-text">Email: {{ cliente.email }}</p>
             </div>
         </div>
-        {% if forloop.counter|divisibleby:3 %}</div>
-            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3 mb-3">
-        {% endif %}
+            {% if forloop.counter|divisibleby:4 %}</div>
+                <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-4 mb-3">
+            {% endif %}
         {% if forloop.last %}
             </div>
         {% endif %}
         {% endfor %}
     {% else %}
-        <p>No hay modelos</p>
+        <p>No hay cliente</p>
     {% endif %}
 
 
 </div>
 </div>
-<div class="col text-center">
-    <a class="btn btn-info mt-5" href="{% url 'ModeloForm' %}">Añadir modelo</a>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
 </body>
 </html>

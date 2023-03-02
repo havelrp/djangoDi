@@ -11,4 +11,5 @@ urlpatterns = [
     path('registro/', views.registro, name='Registro'),
     path('modeloForm/', views.modeloForm, name='ModeloForm'),
     path('contacto/', views.contacto, name='Contacto'),
+    path('cliente/', views.cliente, name='Cliente'),
 ]
